@@ -1,5 +1,5 @@
 # Catch_the_Light
-Project For CS203 course
+Project on FPGA using Vivado for CS203 course
 
 CATCH THE LIGHT (GAME)
 IDEA: Our idea is inspired by a famous game called “Hit the Bunny”. There are a
