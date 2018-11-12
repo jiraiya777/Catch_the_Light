@@ -30,14 +30,15 @@ module main(
     );
     reg [7:0] score;
     reg [5:0] count;
+    wire turnOn;
     initial
      begin
         score = 8'b00000000;
         count = 6'b000000;
     end
-    
+    RishabhModule m(.out());
     always @(*)begin
-    
+        
     end
     
 
