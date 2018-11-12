@@ -1,0 +1,2 @@
+# Catch_the_Light
+Our idea is inspired by a famous game called “Hit the Bunny”. There are a few holes; a bunny randomly comes out of one of the holes, the goal is to hit the bunny as many times as possible. Our idea is to imitate this game with LEDs and switches. One of the LED’s will glow randomly. The player’s goal is to turn on the corresponding switch( below the glowing LED), before the LED goes off, and turn it back OFF.
