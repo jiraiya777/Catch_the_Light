@@ -33,6 +33,7 @@ rnd <= lfsr;
 end
 end
 end
+  
 
 assign rand[3:0]=rnd[3:0];
 // X10+x7
