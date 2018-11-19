@@ -2,12 +2,18 @@
 `resetall
 `timescale 1ns/10ps
 module SapnaModule (
-wire clock,
-wire reset,
-wire [3:0] rand,
-wire pressed
+input wire clock,
+input wire reset,
+output reg [3:0] rand,
+input wire pressed
 );
-reg [9:0] rnd;
+reg[10:0] cnt;
+reg[3:0] rnd;
+initial begin
+    cnt=0;
+    rnd=0;
+end
+/*reg [9:0] rnd;
 wire feedback;
 wire [9:0] lfsr_next;
 
@@ -33,11 +39,17 @@ rnd <= lfsr;
 end
 end
 end
-  
-
 assign rand[3:0]=rnd[3:0];
 // X10+x7
 assign feedback = lfsr[9] ^ lfsr[6];
 assign lfsr_next = {lfsr[8:0], feedback};
-
+*/
+always @(posedge clock) begin
+    cnt=cnt+1;
+    if(pressed==1)
+       rnd=cnt[7:4];
+    rand=rnd; 
+    end
+    
+    
 endmodule

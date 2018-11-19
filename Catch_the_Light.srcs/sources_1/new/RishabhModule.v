@@ -7,13 +7,15 @@ module RishabhModule(
     input clk);
     
             
-    reg [5:0] cnt=6'b0;  //  counter
-    initial
-        turnOn=0;            // initial value of turnOn
-       
-    reg [27:0] clkdiv=28'b0;       // 28 bits
+    reg [5:0] cnt;  //  counter
     
+    reg [27:0] clkdiv;       // 28 bits
     
+    initial begin
+            turnOn=0;            // initial value of turnOn
+            cnt=0;
+            clkdiv=28'b0;
+           end
     always @(*)
     begin
     

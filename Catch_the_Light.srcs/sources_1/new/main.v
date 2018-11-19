@@ -28,8 +28,8 @@ module main(
     output reg [15:0] led,
     output [6:0] a_to_g,
     output [3:0] an1,
-    input startbtn, //connected with middle push btn
-    input dp1
+    input startbtn//, //connected with middle push btn
+   // input dp1
     );
     reg gameOn;
     reg reset;
@@ -52,32 +52,38 @@ module main(
         count = 6'b000000;
     end
     binToBcd b(.B2(score),.bcdout2(scoreBcd));  //for score conversion into bcd for display
-    seg7decimal dis(.x(scoreBcd),.clk(clk1),.clr(clr1),.a2g(a_to_g),.an(an1),.dp(dp1) );    // bcd score passed to 7 segment for display
+    seg7decimal dis(
+    .x(scoreBcd),
+    .clk(clk1),
+    .clr(clr1),
+    .a2g(a_to_g),
+    .an(an1)//,
+    //.dp(dp1) 
+    );    // bcd score passed to 7 segment for display
     SapnaModule s(.rand(rand),.reset(reset),.pressed(pressed),.clock(clk1));   //gives a random number the random number that changes when pressed is made 1
-    RishabhModule r(.reset(reset),.out(turnOn),.clk(clk1));    // gives a signal turnOn after intervals Led is turned on when turnOn signal is on and score is also increases only at this point
+    RishabhModule r(.reset1(reset),.turnOn(turnOn),.clk(clk1));    // gives a signal turnOn after intervals Led is turned on when turnOn signal is on and score is also increases only at this point
+    //always @(*)begin
+        
+    
+        
+    //end
+    
     always @(*)begin
         if(startbtn==1) begin   // start button toggles the gameon register, all the processing is doneonly when gameon is 1
             if(gameOn==1) begin
-                gameOn=0;
-                flag=0;
-                flag2=0;
+                  gameOn=0;
+                  flag=0;
+                  flag2=0;
             end
             else begin
-                gameOn=1;
-                flag=0;
-                flag2=0;
+                  gameOn=1;
+                  flag=0;
+                  flag2=0;
             end
         end
-        if(count>20) begin
-            gameOn=0;   // ending the game when LED has glown 20 times
-            flag=0;
-            flag2=0;
-        end
-    end
-    always @(*)begin
-        if(gameOn==1) begin
-
-            if(reset==0 && flag==0) begin    //reset is made one for one cycle after the gameOn is made 1, this resets the other modules like 'random-number' and 'turnOn' to start the game 
+        else begin            
+            if(gameOn==1) begin
+                if(reset==0 && flag==0) begin    //reset is made one for one cycle after the gameOn is made 1, this resets the other modules like 'random-number' and 'turnOn' to start the game 
                 reset=1;
                 flag=1;
                 pressed=1;
@@ -92,6 +98,12 @@ module main(
                     if(pressed==1) begin
                        pressed=0;   // making pressed 1 for a cycle so that random numer is changed
                        count=count+1;
+                       if(count>20) begin
+                                               gameOn=0;   // ending the game when LED has glown 20 times
+                                               flag=0;
+                                               flag2=0;
+                                           end
+
                     end
                     else begin
                        
@@ -109,6 +121,7 @@ module main(
                     end
                 end
             end
+        end
         end
     end
     

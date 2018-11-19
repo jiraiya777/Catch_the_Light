@@ -94,8 +94,8 @@ set_property PACKAGE_PIN L1 [get_ports {led[15]}]
     set_property PACKAGE_PIN U7 [get_ports {a_to_g[6]}]                    
         set_property IOSTANDARD LVCMOS33 [get_ports {a_to_g[6]}]
 
-set_property PACKAGE_PIN V7 [get_ports dp1]							
-	set_property IOSTANDARD LVCMOS33 [get_ports dp1]
+#set_property PACKAGE_PIN V7 [get_ports dp1]							
+	#set_property IOSTANDARD LVCMOS33 [get_ports dp1]
 
 set_property PACKAGE_PIN U2 [get_ports {an1[0]}]					
 	set_property IOSTANDARD LVCMOS33 [get_ports {an1[0]}]
