@@ -53,8 +53,8 @@ module main(
     end
     binToBcd b(.B2(score),.bcdout2(scoreBcd));  //for score conversion into bcd for display
     seg7decimal dis(.x(scoreBcd),.clk(clk1),.clr(clr1),.a2g(a_to_g),.an(an1),.dp(dp1) );    // bcd score passed to 7 segment for display
-    SapnaModule s(.random(rand),.reset(reset),.pressed(pressed));   //gives a random number the random number that changes when pressed is made 1
-    RishabhModule r(.reset(reset),.out(turnOn));    // gives a signal turnOn after intervals Led is turned on when turnOn signal is on and score is also increases only at this point
+    SapnaModule s(.rand(rand),.reset(reset),.pressed(pressed),.clock(clk1));   //gives a random number the random number that changes when pressed is made 1
+    RishabhModule r(.reset(reset),.out(turnOn),.clk(clk1));    // gives a signal turnOn after intervals Led is turned on when turnOn signal is on and score is also increases only at this point
     always @(*)begin
         if(startbtn==1) begin   // start button toggles the gameon register, all the processing is doneonly when gameon is 1
             if(gameOn==1) begin

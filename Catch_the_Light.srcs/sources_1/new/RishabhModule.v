@@ -1,12 +1,16 @@
+
+
+
 module RishabhModule(
-    input reg reset ,               // clk 
-    input wire turnOn
+    input wire reset1 ,               // clk 
+    output reg turnOn,
     input clk);
     
             
-    reg [5:0] count=6'b0;    counter
-    turnOn=0;            // initial value of turnOn
-            
+    reg [5:0] cnt=6'b0;  //  counter
+    initial
+        turnOn=0;            // initial value of turnOn
+       
     reg [27:0] clkdiv=28'b0;       // 28 bits
     
     
