@@ -34,7 +34,7 @@ module main(
     reg gameOn;
     reg reset;
     reg pressed;
-    reg scoreBcd;
+    wire[19:0] scoreBcd;
     reg [7:0] score;
     reg [5:0] count;
     reg flag,flag2;
